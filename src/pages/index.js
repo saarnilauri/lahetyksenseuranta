@@ -39,7 +39,7 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(filter: {node_locale: {eq:"en-US"}},sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
@@ -60,7 +60,7 @@ export const pageQuery = graphql`
       }
     }
     allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
+      filter: { node_locale: {eq:"en-US"}, contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
     ) {
       edges {
         node {
