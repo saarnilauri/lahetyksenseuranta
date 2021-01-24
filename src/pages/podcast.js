@@ -2,27 +2,27 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import styles from './blog.module.css'
+import styles from './podcast.module.css'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+import EpisodePreview from '../components/episode-preview'
 
-class BlogIndex extends React.Component {
+class PodcastIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const posts = get(this, 'props.data.allContentfulEpisode.edges')
 
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>Blog</div>
+          <div className={styles.hero}>Podcast</div>
           <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
+            <h2 className="section-headline">Recent episodes</h2>
+            <ul className="episode-list">
               {posts.map(({ node }) => {
                 return (
                   <li key={node.slug}>
-                    <ArticlePreview article={node} />
+                    <EpisodePreview episode={node} />
                   </li>
                 )
               })}
@@ -34,26 +34,23 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default PodcastIndex
 
 export const pageQuery = graphql`
-  query BlogIndexQuery {
-    allContentfulBlogPost(filter: {node_locale: {eq:"en-US"}}, sort: { fields: [publishDate], order: DESC }) {
+  query PodcastIndexQuery {
+    allContentfulEpisode(sort: { fields: [published], order: DESC }) {
       edges {
         node {
           title
           slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          tags
-          heroImage {
+          published(formatString: "MMMM Do, YYYY")
+          image {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
           description {
-            childMarkdownRemark {
-              html
-            }
+            json
           }
         }
       }
