@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import styles from './podcast.module.css'
 import Layout from '../components/layout'
 import EpisodePreview from '../components/episode-preview'
 
@@ -15,7 +14,7 @@ class PodcastIndex extends React.Component {
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>Podcast</div>
+          <div className="hero">Podcast</div>
           <div className="wrapper">
             <h2 className="section-headline">Recent episodes</h2>
             <ul className="episode-list">
@@ -50,7 +49,7 @@ export const pageQuery = graphql`
             }
           }
           description {
-            json
+            raw
           }
         }
       }

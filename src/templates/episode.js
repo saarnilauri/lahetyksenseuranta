@@ -4,8 +4,20 @@ import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+/*import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 
-import heroStyles from '../components/hero.module.css'
+const Bold = ({ children }) => <span className="bold">{children}</span>
+const Text = ({ children }) => <p className="align-center">{children}</p>
+
+const options = {
+  renderMark: {
+    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+  },
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+  },
+};*/
 
 class EpisodeTemplate extends React.Component {
   render() {
@@ -16,9 +28,9 @@ class EpisodeTemplate extends React.Component {
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={`${episode.title} | ${siteTitle}`} />
-          <div className={heroStyles.hero}>
+          <div className="hero">
             <Img
-              className={heroStyles.heroImage}
+              className="hero-image"
               alt={episode.title}
               fluid={episode.image.fluid}
             />
@@ -30,13 +42,10 @@ class EpisodeTemplate extends React.Component {
                 display: 'block',
               }}
             >
-              {episode.published}
+              <strong>{episode.published}</strong>
             </p>
-            {/*<div
-              dangerouslySetInnerHTML={{
-                __html: episode.body.childMarkdownRemark.html,
-              }}
-            />*/}
+            <div>{documentToReactComponents(episode.description.json)}</div>
+            
           </div>
         </div>
       </Layout>
@@ -57,7 +66,7 @@ export const pageQuery = graphql`
         }
       }
       description {
-        json
+        raw
       }
     }
   }

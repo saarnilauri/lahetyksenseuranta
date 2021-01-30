@@ -1,39 +1,29 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import { Helmet } from 'react-helmet'
-import Hero from '../components/hero'
-import Layout from '../components/layout'
-import EpisodePreview from '../components/episode-preview'
+import React from "react";
+import { graphql } from "gatsby";
+import get from "lodash/get";
+import { Helmet } from "react-helmet";
+import Layout from "../components/layout";
+import Container from "../components/container";
+import LargeEpisodePlayer from "../components/large-episode-player";
+import EpisodePreview from "../components/episode-preview";
 
 class RootIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulEpisode.edges')
-    
+    const siteTitle = get(this, "props.data.site.siteMetadata.title");
+    const episodes = get(this, "props.data.allContentfulEpisode.edges");
+
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
+        <div className="px-5">
           <Helmet title={siteTitle} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent episodes</h2>
-            <ul className="episode-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <EpisodePreview episode={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
+          <LargeEpisodePlayer episode={episodes[0].node} />
         </div>
       </Layout>
-    )
+    );
   }
 }
 
-export default RootIndex
+export default RootIndex;
 
 export const pageQuery = graphql`
   query HomeQuery {
@@ -41,18 +31,29 @@ export const pageQuery = graphql`
       edges {
         node {
           title
+          episodeNumber
           slug
-          published(formatString: "MMMM Do, YYYY")
+          published(formatString: "D.M.YYYY")
+          excerpt{
+            excerpt
+          }
+          podbeanUrl
+          tags {
+            title
+          }
+          bibleReference {
+            title
+          }
           image {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
           description {
-            json
+            raw
           }
         }
       }
     }
   }
-`
+`;

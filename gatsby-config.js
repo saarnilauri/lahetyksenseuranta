@@ -44,6 +44,8 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-webpack-size",
     {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
