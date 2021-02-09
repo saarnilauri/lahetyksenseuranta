@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Duration renders correctly 1`] = `
+<time
+  className="test"
+  dateTime="P3600S"
+>
+  1:00:00
+</time>
+`;

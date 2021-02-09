@@ -1,11 +1,11 @@
-const Promise = require('bluebird')
-const path = require('path')
+const Promise = require("bluebird");
+const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const episode = path.resolve('./src/templates/episode.js')
+    const episode = path.resolve("./src/templates/episode.js");
     resolve(
       graphql(
         `
@@ -20,23 +20,23 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
-      ).then(result => {
+      ).then((result) => {
         if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
+          console.log(result.errors);
+          reject(result.errors);
         }
 
-        const posts = result.data.allContentfulEpisode.edges
-        posts.forEach(post => {
+        const posts = result.data.allContentfulEpisode.edges;
+        posts.forEach((post) => {
           createPage({
             path: `/podcast/${post.node.slug}/`,
             component: episode,
             context: {
               slug: post.node.slug,
             },
-          })
-        })
+          });
+        });
       })
-    )
-  })
-}
+    );
+  });
+};

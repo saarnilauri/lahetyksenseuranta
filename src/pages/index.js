@@ -3,9 +3,7 @@ import { graphql } from "gatsby";
 import get from "lodash/get";
 import { Helmet } from "react-helmet";
 import Layout from "../components/layout";
-import Container from "../components/container";
 import LargeEpisodePlayer from "../components/large-episode-player";
-import EpisodePreview from "../components/episode-preview";
 
 class RootIndex extends React.Component {
   render() {
@@ -34,7 +32,7 @@ export const pageQuery = graphql`
           episodeNumber
           slug
           published(formatString: "D.M.YYYY")
-          excerpt{
+          excerpt {
             excerpt
           }
           podbeanUrl
@@ -43,6 +41,10 @@ export const pageQuery = graphql`
           }
           bibleReference {
             title
+            shortName
+            text {
+              text
+            }
           }
           image {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {

@@ -3,8 +3,11 @@ import { useState } from "react";
 import Logo from "../../static/ls-logo.png";
 import { Link } from "gatsby";
 
-const LinkItem = ({ title, slug, isActive }) => {
-  const commonStyles = "uppercase rounded-md font-medium px-3 py-2 text-sm ";
+const LinkItem = ({ title, slug, isActive, isMobile }) => {
+  let commonStyles = "uppercase rounded-md font-medium px-3 py-2 text-sm ";
+  if (isMobile) {
+    commonStyles = "block px-3 py-2 rounded-md text-base font-medium ";
+  }
   const styles = isActive
     ? "bg-gray-900 text-white"
     : "text-gray-300 hover:bg-gray-700 hover:text-white";
@@ -51,7 +54,7 @@ const Navigation = ({ location }) => {
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <svg
-                  class="block h-6 w-6"
+                  className="block h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -59,9 +62,9 @@ const Navigation = ({ location }) => {
                   aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
@@ -118,6 +121,7 @@ const Navigation = ({ location }) => {
                 title={object.title}
                 isActive={object.isActive}
                 slug={object.slug}
+                isMobile
               />
             ))}
           </div>
