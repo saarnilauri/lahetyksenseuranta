@@ -36,7 +36,13 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful starter",
+    title: "Pohdintaa lähetystyöstä nykyajassa",
+    titleTemplate: "%s · Lähetksenseuranta podcast",
+    description:
+      "Lähetyksenseuranta podcast. Teitä varten, jotka haluatte pohtia lähetystyötä nykyajassa.",
+    url: "https://lahetyksenseuranta.netlify.app", // No trailing slash allowed!
+    image: "/images/header-bg-alt.jpg", // Path to your image you placed in the 'static' folder
+    twitterUsername: "@lsaarni",
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [

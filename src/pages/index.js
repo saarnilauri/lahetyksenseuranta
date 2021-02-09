@@ -1,10 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import get from "lodash/get";
-import { Helmet } from "react-helmet";
 import Layout from "../components/layout";
 import LargeEpisodePlayer from "../components/large-episode-player";
-
+import SEO from "../components/seo";
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, "props.data.site.siteMetadata.title");
@@ -12,8 +11,8 @@ class RootIndex extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <SEO />
         <div className="px-5">
-          <Helmet title={siteTitle} />
           <LargeEpisodePlayer episode={episodes[0].node} />
         </div>
       </Layout>
