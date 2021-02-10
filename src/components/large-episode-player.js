@@ -63,7 +63,7 @@ const LargeEpisodePlayer = ({ episode }) => {
         <div className="text-center mb-5 episode-excerpt">
           {episode.excerpt.excerpt}
         </div>
-        <Player url={episode.podbeanUrl} />
+        <Player url={episode.podbeanUrl} image={episode.image} />
       </div>
     </Container>
   );

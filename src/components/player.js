@@ -1,6 +1,9 @@
 import React, { useRef, useReducer } from "react";
 import ReactPlayer from "react-player";
+import Img from 'gatsby-image'
+
 import playerReducer from "../reducers/playerReducer";
+
 import IconPlay from "./icon-play";
 import IconPause from "./icon-pause";
 import IconSpeed1 from "./icon-speed-1";
@@ -25,7 +28,7 @@ const initialState = {
   loop: false,
 };
 
-const Player = ({ url }) => {
+const Player = ({ url, image, title }) => {
   const [state, dispatch] = useReducer(playerReducer, {
     ...initialState,
     ...{ url },
@@ -44,8 +47,15 @@ const Player = ({ url }) => {
   console.log(nextRate);
 
   return (
-    <div className="flex justify-center content-center player">
-      <section className="flex flex-col w-full bg-gray-900 lg:w-4/5 player-section">
+    <div className="flex flex-col md:flex-row justify-center content-center player">
+      
+    <div className="w-full md:w-1/3 lg:w-2/4 bg-red-500 player-image"><Img
+        className="player-image"
+        alt={title}
+        fluid={image.fluid}
+      />
+      </div>
+      <section className="flex flex-col w-full bg-gray-900 md:w-2/3 lg:w-2/4 justify-center player-section">
         <div className="player-wrapper">
           <ReactPlayer
             width={0}
@@ -69,7 +79,9 @@ const Player = ({ url }) => {
         </div>
         <div className="flex justify-center content-center items-center my-5 player-controls">
           <div className="flex justify-center content-center w-1/4 volume-wrapper">
-            <div className="pr-2"><IconVolume /></div>
+            <div className="pr-2">
+              <IconVolume />
+            </div>
             <input
               type="range"
               min={0}

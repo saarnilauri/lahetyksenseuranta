@@ -46,8 +46,8 @@ export const pageQuery = graphql`
             }
           }
           image {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
+            fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           description {
