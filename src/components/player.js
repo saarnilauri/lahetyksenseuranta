@@ -44,7 +44,6 @@ const Player = ({ url, image, title }) => {
   };
 
   const nextRate = state.playbackRate === 2 ? 1 : state.playbackRate + 0.5;
-  console.log(nextRate);
 
   return (
     <div className="flex flex-col md:flex-row justify-center content-center player">
