@@ -14,7 +14,9 @@ class RootIndex extends React.Component {
       <Layout location={this.props.location}>
         <SEO />
         <LargeEpisodePlayer episode={episodes[0].node} />
-        <EpisodeCards episodes={episodes.slice(1, episodesToSlice)} />
+        <div className="md:mt-10">
+          <EpisodeCards episodes={episodes.slice(1, episodesToSlice)} />
+        </div>
       </Layout>
     );
   }

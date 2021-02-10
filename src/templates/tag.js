@@ -11,10 +11,12 @@ const TagTemplate = (props) => {
   return (
     <Layout location={props.location}>
       <SEO title={`Avainsana: ${tag.title}`} />
-      <h1 className="text-white text-4xl font-bold uppercase mb-10">
-        Avainsanaan &ldquo;{tag.title}&rdquo; liittyvät jaksot
-      </h1>
-      <EpisodeCards episodes={tag.episode} />
+      <div className="px-5 md:px-10">
+        <h1 className="text-white text-md md:text-2xl lg:text-4xl font-bold uppercase mb-10">
+          Avainsanaan &ldquo;{tag.title}&rdquo; liittyvät jaksot
+        </h1>
+        <EpisodeCards episodes={tag.episode} />
+      </div>
     </Layout>
   );
 };
