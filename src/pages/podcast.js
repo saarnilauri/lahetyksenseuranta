@@ -1,58 +1,48 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import { Helmet } from 'react-helmet'
-import Layout from '../components/layout'
-import EpisodePreview from '../components/episode-preview'
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import EpisodeCards from "../components/episode-cards";
 
-class PodcastIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulEpisode.edges')
+const PodcastIndex = (props) => {
+  return (
+    <Layout location={props.location}>
+      <SEO title="Kaikki jaksot" />
+      <EpisodeCards episodes={props.data.allContentfulEpisode.edges} />
+    </Layout>
+  );
+};
 
-    return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <div className="hero">Podcast</div>
-          <div className="wrapper">
-            <h2 className="section-headline">Recent episodes</h2>
-            <ul className="episode-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <EpisodePreview episode={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
-      </Layout>
-    )
-  }
-}
-
-export default PodcastIndex
+export default PodcastIndex;
 
 export const pageQuery = graphql`
   query PodcastIndexQuery {
     allContentfulEpisode(sort: { fields: [published], order: DESC }) {
       edges {
         node {
+          contentful_id
           title
+          episodeNumber
           slug
-          published(formatString: "MMMM Do, YYYY")
-          image {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
+          published(formatString: "D.M.YYYY")
+          duration
+          excerpt {
+            excerpt
+          }
+          bibleReference {
+            title
+            shortName
+            text {
+              text
             }
           }
-          description {
-            raw
+          image {
+            fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
+              ...GatsbyContentfulFluid_withWebp
+            }
           }
         }
       }
     }
   }
-`
+`;

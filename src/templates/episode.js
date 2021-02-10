@@ -1,67 +1,84 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import get from 'lodash/get'
-import Img from 'gatsby-image'
-import Layout from '../components/layout'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-/*import { BLOCKS, MARKS } from "@contentful/rich-text-types"
+import React from "react";
+import { graphql, Link } from "gatsby";
 
-const Bold = ({ children }) => <span className="bold">{children}</span>
-const Text = ({ children }) => <p className="align-center">{children}</p>
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import LargeEpisodePlayer from "../components/large-episode-player";
+import RichText from "../components/rich-text";
 
-const options = {
-  renderMark: {
-    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
-  },
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-  },
-};*/
+const EpisodeTemplate = (props) => {
+  const episode = props.data.contentfulEpisode;
 
-class EpisodeTemplate extends React.Component {
-  render() {
-    const episode = get(this.props, 'data.contentfulEpisode')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+  return (
+    <Layout location={props.location}>
+      <SEO title={`Jakso ${episode.episodeNumber} - ${episode.title}`} />
+      <LargeEpisodePlayer episode={episode} />
 
-    return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={`${episode.title} | ${siteTitle}`} />
-          <div className="hero">
-            <Img
-              className="hero-image"
-              alt={episode.title}
-              fluid={episode.image.fluid}
-            />
-          </div>
-          <div className="wrapper">
-            <h1 className="section-headline">{episode.title}</h1>
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              <strong>{episode.published}</strong>
-            </p>
-            <div>{documentToReactComponents(episode.description.json)}</div>
-            
-          </div>
+      <div className="container md:px-10 md:py-10 mx-auto md:grid md:grid-cols-2 md:gap-10">
+        <div className="bg-white py-5 px-5">
+          <RichText raw={episode.description.raw} />
         </div>
-      </Layout>
-    )
-  }
-}
+        <div className="bg-gray-700 text-white py-5 px-5 bible-verses">
+          <h3 className="font-bold uppercase text-lg md:text-2xl lg:text-xl xl:text-2xl mb-5">
+            Jaksoon liittyvä Raamatun teksti
+          </h3>
+          {episode.bibleReference.map((item) => (
+            <div className="mb-5 bg-gray-900 py-2 px-5">
+              <h4 className="font-bold mb-2 text-red-500">{item.title}</h4>
+              <p className="text-sm">{item.text.text}</p>
+            </div>
+          ))}
 
-export default EpisodeTemplate
+          <h3 className="font-bold uppercase text-lg md:text-2xl lg:text-xl xl:text-2xl mb-5">
+            Avainsanat
+          </h3>
+          <ul className="px-5">
+            {episode.tags.map((item) => (
+              <li key={item.title} className="text-sm list-disc mb-2">
+                <Link
+                  to={`/tags/${item.slug}`}
+                  class="hover:text-red-500 text-white"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+//<LargeEpisodePlayer episode={episode} />
+
+export default EpisodeTemplate;
 
 export const pageQuery = graphql`
   query EpisodeBySlug($slug: String!) {
     contentfulEpisode(slug: { eq: $slug }) {
+      contentful_id
       title
-      published(formatString: "MMMM Do, YYYY")
+      episodeNumber
+      slug
+      published(formatString: "D.M.YYYY")
+      duration
+      excerpt {
+        excerpt
+      }
+      podbeanUrl
+      tags {
+        title
+        slug
+      }
+      bibleReference {
+        title
+        shortName
+        text {
+          text
+        }
+      }
       image {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
+        fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
           ...GatsbyContentfulFluid_withWebp
         }
       }
@@ -70,4 +87,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -7,10 +7,9 @@ import SEO from "../components/seo";
 import EpisodeCards from "../components/episode-cards";
 class RootIndex extends React.Component {
   render() {
-    const siteTitle = get(this, "props.data.site.siteMetadata.title");
     const episodes = get(this, "props.data.allContentfulEpisode.edges");
-    const episodesToSlice = episodes.length >= 4 ? 3 : episodes.length
-    
+    const episodesToSlice = episodes.length >= 4 ? 3 : episodes.length;
+
     return (
       <Layout location={this.props.location}>
         <SEO />
@@ -52,9 +51,6 @@ export const pageQuery = graphql`
             fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
               ...GatsbyContentfulFluid_withWebp
             }
-          }
-          description {
-            raw
           }
         }
       }

@@ -13,7 +13,7 @@ const HeaderText = () => (
         </h1>
       </div>
     </div>
-    <p className="bg-gray-800 bg-opacity-60 px-2 md:px-4 py-1 md:py-2 lg:py-3 lg:px-4 md:inline text-white text-sm md:text-3xl lg:text-4xl lg:ml-8 xl:text-4xl text-shadow-md">
+    <p className="bg-gray-800 bg-opacity-60 px-2 md:px-4 py-1 md:py-2 lg:py-3 lg:px-4 inline text-white text-sm md:text-3xl lg:text-4xl lg:ml-8 xl:text-4xl text-shadow-md">
       Podcast‚ joka käsittelee lähetystyötä nykyajassa.
     </p>
   </div>
