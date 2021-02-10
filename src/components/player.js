@@ -48,7 +48,8 @@ const Player = ({ url, image, title }) => {
   return (
     <div className="flex flex-col md:flex-row justify-center content-center player">
       
-    <div className="w-full md:w-1/3 lg:w-2/4 bg-red-500 player-image"><Img
+    <div className="w-full md:w-1/3 lg:w-2/4 bg-red-500 player-image">
+    <Img
         className="player-image"
         alt={title}
         fluid={image.fluid}

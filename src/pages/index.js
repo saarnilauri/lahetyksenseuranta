@@ -4,17 +4,18 @@ import get from "lodash/get";
 import Layout from "../components/layout";
 import LargeEpisodePlayer from "../components/large-episode-player";
 import SEO from "../components/seo";
+import EpisodeCards from "../components/episode-cards";
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, "props.data.site.siteMetadata.title");
     const episodes = get(this, "props.data.allContentfulEpisode.edges");
-
+    const episodesToSlice = episodes.length >= 4 ? 3 : episodes.length
+    
     return (
       <Layout location={this.props.location}>
         <SEO />
-        <div className="px-5">
-          <LargeEpisodePlayer episode={episodes[0].node} />
-        </div>
+        <LargeEpisodePlayer episode={episodes[0].node} />
+        <EpisodeCards episodes={episodes.slice(1, episodesToSlice)} />
       </Layout>
     );
   }
@@ -27,10 +28,12 @@ export const pageQuery = graphql`
     allContentfulEpisode(sort: { fields: [published], order: DESC }) {
       edges {
         node {
+          contentful_id
           title
           episodeNumber
           slug
           published(formatString: "D.M.YYYY")
+          duration
           excerpt {
             excerpt
           }

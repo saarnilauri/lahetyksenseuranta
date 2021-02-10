@@ -1,10 +1,13 @@
 import React from "react";
 
-const IconClock = () => (
+const IconClock = ({small}) => {
+  const dimensions = !small ? {height: 30, width: 30} : {height: 15, width: 15};
+
+return(
   <svg
-    height="30"
+    height={dimensions.height}
     viewBox="0 0 30 30"
-    width="30"
+    width={dimensions.width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -16,5 +19,6 @@ const IconClock = () => (
     <path d="m19.294 14.048c.526 0 .952.426.952.952s-.426.952-.952.952h-4.297c-.526 0-.952-.426-.952-.952s.426-.952.952-.952z" />
   </svg>
 );
+}
 
 export default IconClock;

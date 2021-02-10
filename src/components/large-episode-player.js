@@ -25,7 +25,7 @@ const LargeEpisodePlayer = ({ episode }) => {
               {episode.title}
             </h2>
             <div className="flex flex-col md:flex-row pl-100">
-              <div className="flex flex-row mb-2">
+              <div className="flex flex-row items-center mb-2 md:mb-0">
                 <IconWrapper>
                   <IconCalendar />
                 </IconWrapper>
@@ -33,7 +33,7 @@ const LargeEpisodePlayer = ({ episode }) => {
                   <p>{episode.published}</p>
                 </IconTextWrapper>
               </div>
-              <div className="flex flex-row mb-2">
+              <div className="flex flex-row items-center mb-2 md:mb-0">
                 <IconWrapper>
                   <IconClock />
                 </IconWrapper>
@@ -41,7 +41,7 @@ const LargeEpisodePlayer = ({ episode }) => {
                   <p>19m 20s</p>
                 </IconTextWrapper>
               </div>
-              <div className="flex flex-row">
+              <div className="flex flex-row items-center">
                 <IconWrapper>
                   <IconBible />
                 </IconWrapper>

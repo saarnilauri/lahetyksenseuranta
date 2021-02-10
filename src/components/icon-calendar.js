@@ -1,10 +1,12 @@
 import React from 'react';
 
-const IconCalendar = (props) => (
+const IconCalendar = ({small}) => {
+  const dimensions = !small ? {height: 30, width: 28} : {height: 15, width: 19};
+  return (
     <svg
-    height="30"
+    height={dimensions.height}
     viewBox="0 0 28 30"
-    width="28"
+    width={dimensions.width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="m2.509 12.432h22.944v14.85h-22.944z" fill="#fff" />
@@ -30,6 +32,6 @@ const IconCalendar = (props) => (
     <path d="m15.027 22.867h2.536v2.449h-2.536z" />
     <path d="m19.907 22.867h2.536v2.449h-2.536z" />
   </svg>
-    );
+    );}
 
 export default IconCalendar;
