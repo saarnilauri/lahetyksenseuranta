@@ -59,7 +59,8 @@
     "dev": "gatsby develop",
     "test": "jest",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "pretty-quick": "pretty-quick --staged"
   },
   "husky": {
     "hooks": {
