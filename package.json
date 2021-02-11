@@ -59,10 +59,7 @@
     "dev": "gatsby develop",
     "test": "jest",
     "build": "gatsby build",
-    "heroku-postbuild": "gatsby build",
-    "serve": "gatsby serve",
-    "netlify:login": "netlify login",
-    "netlify:deploy": "netlify deploy -d public -p"
+    "serve": "gatsby serve"
   },
   "husky": {
     "hooks": {
