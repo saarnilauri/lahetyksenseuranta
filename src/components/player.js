@@ -1,6 +1,6 @@
 import React, { useRef, useReducer } from "react";
 import ReactPlayer from "react-player";
-import Img from 'gatsby-image'
+import Img from "gatsby-image";
 
 import playerReducer from "../reducers/playerReducer";
 
@@ -47,13 +47,8 @@ const Player = ({ url, image, title }) => {
 
   return (
     <div className="flex flex-col md:flex-row justify-center content-center player">
-      
-    <div className="w-full md:w-1/3 lg:w-2/4 bg-red-500 player-image">
-    <Img
-        className="player-image"
-        alt={title}
-        fluid={image.fluid}
-      />
+      <div className="w-full md:w-1/3 lg:w-2/4 bg-red-500 player-image">
+        <Img className="player-image" alt={title} fluid={image.fluid} />
       </div>
       <section className="flex flex-col w-full bg-gray-900 md:w-2/3 lg:w-2/4 justify-center player-section">
         <div className="player-wrapper">
@@ -106,7 +101,6 @@ const Player = ({ url, image, title }) => {
           <div className="flex justify-center w-1/4 speed-button-wrapper">
             <button
               onClick={(e) => {
-                console.log(e.target.value);
                 dispatch({
                   type: "SET_PLAYBACK_RATE",
                   payload: e.currentTarget.value,

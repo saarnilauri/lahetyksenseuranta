@@ -1,26 +1,28 @@
 import React from "react";
 import { graphql } from "gatsby";
-import get from "lodash/get";
 import Layout from "../components/layout";
 import LargeEpisodePlayer from "../components/large-episode-player";
 import SEO from "../components/seo";
 import EpisodeCards from "../components/episode-cards";
-class RootIndex extends React.Component {
-  render() {
-    const episodes = get(this, "props.data.allContentfulEpisode.edges");
-    const episodesToSlice = episodes.length >= 4 ? 3 : episodes.length;
+import InfoSection from "../components/info-section";
+import Container from "../components/container";
 
-    return (
-      <Layout location={this.props.location}>
-        <SEO />
+const RootIndex = (props) => {
+  const episodes = props.data.allContentfulEpisode.edges;
+  const episodesToSlice = episodes.length >= 4 ? 3 : episodes.length;
+  return (
+    <Layout location={props.location}>
+      <SEO />
+      <Container>
         <LargeEpisodePlayer episode={episodes[0].node} />
         <div className="md:mt-10">
           <EpisodeCards episodes={episodes.slice(1, episodesToSlice)} />
         </div>
-      </Layout>
-    );
-  }
-}
+      </Container>
+      <InfoSection bgImage={props.data.bgMap} person={props.data.person} />
+    </Layout>
+  );
+};
 
 export default RootIndex;
 
@@ -55,6 +57,29 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    person: contentfulPerson(name: { eq: "Lauri Saarni" }) {
+      name
+      shortBio {
+        shortBio
+        childMarkdownRemark {
+          html
+        }
+      }
+      email
+      facebook
+      twitter
+      instagram
+      image {
+        fluid(maxWidth: 400) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+    }
+    bgMap: contentfulAsset(title: { eq: "bg-map" }) {
+      fluid(maxWidth: 1200) {
+        ...GatsbyContentfulFluid_withWebp
       }
     }
   }

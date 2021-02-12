@@ -32,7 +32,7 @@ const Template = ({ children, location }) => {
           <HeaderText isHomePage={location.pathname === "/"} />
         </Container>
       </HeroBackground>
-      <Container>{children}</Container>
+      {children}
       <Footer />
     </React.Fragment>
   );

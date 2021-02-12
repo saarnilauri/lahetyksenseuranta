@@ -22,11 +22,11 @@
     "gatsby-source-contentful": "^4.5.0",
     "gatsby-transformer-remark": "^2.15.0",
     "gatsby-transformer-sharp": "^2.11.0",
-    "lodash": "^4.17.20",
     "postcss": "^8.2.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
+    "react-markdown": "^5.0.3",
     "react-player": "^2.8.1",
     "tailwindcss": "^2.0.2"
   },

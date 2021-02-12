@@ -19,8 +19,6 @@ const LinkItem = ({ title, slug, isActive, isMobile }) => {
 };
 
 const Navigation = ({ location, siteLogo }) => {
-  //console.log(location);
-
   const links = [
     { title: "Etusivu", slug: "/", isActive: location.pathname === "/" },
     {
@@ -44,8 +42,8 @@ const Navigation = ({ location, siteLogo }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="site-navigation">
-      <nav className="bg-gray-800 bg-opacity-80 fixed top-0 left-0 w-full border-b-2 z-50">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <nav className="bg-gray-800 bg-opacity-80 top-0 left-0 w-full border-b-2 z-50">
+        <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <button

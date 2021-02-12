@@ -43,7 +43,7 @@ const EpisodeCards = ({ episodes }) => (
               <div className="mt-5">
                 <Link
                   to={`/podcast/${episode.slug}`}
-                  className="hover:bg-gray-700 py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100"
+                  className="hover:bg-gray-900 py-2 px-3 font-semibold hover:text-white bg-gray-600 text-gray-100"
                 >
                   Avaa jakso
                 </Link>

@@ -268,7 +268,7 @@ exports[`EpisodeCards renders correctly with the node key 1`] = `
           className="mt-5"
         >
           <a
-            className="hover:bg-gray-700 py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100"
+            className="hover:bg-gray-900 py-2 px-3 font-semibold hover:text-white bg-gray-600 text-gray-100"
             href="/podcast/seurantakoodi-mk-16-15-16"
           >
             Avaa jakso
@@ -537,7 +537,7 @@ exports[`EpisodeCards renders correctly with the node key 1`] = `
           className="mt-5"
         >
           <a
-            className="hover:bg-gray-700 py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100"
+            className="hover:bg-gray-900 py-2 px-3 font-semibold hover:text-white bg-gray-600 text-gray-100"
             href="/podcast/seurantakoodi-mt-28-18-20"
           >
             Avaa jakso
@@ -817,7 +817,7 @@ exports[`EpisodeCards renders correctly without the node key 1`] = `
           className="mt-5"
         >
           <a
-            className="hover:bg-gray-700 py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100"
+            className="hover:bg-gray-900 py-2 px-3 font-semibold hover:text-white bg-gray-600 text-gray-100"
             href="/podcast/seurantakoodi-mk-16-15-16"
           >
             Avaa jakso
@@ -1086,7 +1086,7 @@ exports[`EpisodeCards renders correctly without the node key 1`] = `
           className="mt-5"
         >
           <a
-            className="hover:bg-gray-700 py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100"
+            className="hover:bg-gray-900 py-2 px-3 font-semibold hover:text-white bg-gray-600 text-gray-100"
             href="/podcast/seurantakoodi-mt-28-18-20"
           >
             Avaa jakso
