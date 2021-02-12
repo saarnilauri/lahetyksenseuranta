@@ -8,7 +8,7 @@ exports[`Footer renders correctly 1`] = `
     className="container mx-auto"
   >
     <p
-      className="text-white text-xs text-right"
+      className="px-10 text-white text-xs text-center md:text-right"
     >
       Copyright - Lauri Saarni - 2021
     </p>

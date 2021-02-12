@@ -1,6 +1,5 @@
 import React from "react";
 import Img from "gatsby-image";
-import has from "lodash/has";
 import { Link } from "gatsby";
 import IconCalendar from "./icon-calendar";
 import IconWithText from "./icon-with-text";
@@ -11,7 +10,7 @@ const EpisodeCards = ({ episodes }) => (
   <div className="episode-cards-wrapper mb-10">
     <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-10 place-content-stretch container mx-auto my-auto px-5 md:px-0">
       {episodes.map((item) => {
-        const episode = has(item, "node") ? item.node : item;
+        const episode = "node" in item ? item.node : item;
         return (
           <div
             key={episode.contentful_id}
