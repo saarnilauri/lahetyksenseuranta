@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Logo from "../../static/ls-logo.png";
+import Img from "gatsby-image";
 import { Link } from "gatsby";
 
 const LinkItem = ({ title, slug, isActive, isMobile }) => {
@@ -18,7 +18,7 @@ const LinkItem = ({ title, slug, isActive, isMobile }) => {
   );
 };
 
-const Navigation = ({ location }) => {
+const Navigation = ({ location, siteLogo }) => {
   //console.log(location);
 
   const links = [
@@ -73,9 +73,9 @@ const Navigation = ({ location }) => {
             </div>
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex-shrink-0 flex items-center">
-                <img
+                <Img
                   className="block h-10 w-auto my-0"
-                  src={Logo}
+                  fixed={siteLogo}
                   alt="Lähetyksenseuranta logo"
                 />
               </div>

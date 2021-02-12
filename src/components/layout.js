@@ -9,10 +9,15 @@ import Footer from "./footer";
 const Template = ({ children, location }) => {
   const data = useStaticQuery(
     graphql`
-      query {
-        contentfulAsset(title: { eq: "bg-image" }) {
+      query Layout {
+        bgImage: contentfulAsset(title: { eq: "bg-image" }) {
           fluid {
             ...GatsbyContentfulFluid_withWebp
+          }
+        }
+        siteLogo: contentfulAsset(title: { eq: "ls-logo" }) {
+          fixed(width: 45, height: 45) {
+            ...GatsbyContentfulFixed_withWebp
           }
         }
       }
@@ -21,8 +26,8 @@ const Template = ({ children, location }) => {
 
   return (
     <React.Fragment>
-      <HeroBackground bgImage={data.contentfulAsset.fluid}>
-        <Navigation location={location} />
+      <HeroBackground bgImage={data.bgImage.fluid}>
+        <Navigation location={location} siteLogo={data.siteLogo.fixed} />
         <Container>
           <HeaderText isHomePage={location.pathname === "/"} />
         </Container>
