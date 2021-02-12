@@ -1,14 +1,16 @@
 import React from "react";
-import bgImage from "../../static/header-bg-alt.jpg";
+import BackgroundImage from "gatsby-background-image";
 
-//style={{ backgroundImage: "url(" + bgImage + ")" }}
-const HeroBackground = ({ children }) => (
-  <div
-    className="bg-gray-900 bg-center bg-cover bg-no-repeat hero-background relative bg-hero-lg border-b-2 border-white mb-10"
-    style={{ backgroundImage: "url(" + bgImage + ")" }}
-  >
-    {children}
-  </div>
-);
+const HeroBackground = ({ bgImage, children }) => {
+  return (
+    <BackgroundImage
+      Tag="section"
+      className="bg-gray-900 relative border-b-2 border-white mb-10"
+      fluid={bgImage}
+    >
+      {children}
+    </BackgroundImage>
+  );
+};
 
 export default HeroBackground;
