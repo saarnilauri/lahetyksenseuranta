@@ -2,14 +2,13 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import H1 from "../components/h1";
 
 const TagsIndex = (props) => {
   return (
     <Layout location={props.location}>
       <SEO title="Podcastin avainsanat" />
-      <h1 className="text-white text-lg lg:text-3xl uppercase font-bold mb-5">
-        Podcastin avainsanat
-      </h1>
+      <H1>Podcastin avainsanat</H1>
       <ul className="px-10">
         {props.data.allContentfulTag.edges.map((item) => (
           <li

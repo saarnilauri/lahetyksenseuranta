@@ -1,8 +1,14 @@
 import React from "react";
+import { graphql } from "gatsby";
+
 import Layout from "../components/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
-import TextBox from "../components/text-box";
+import TextBox, {
+  TextBoxBody,
+  TextBoxPadder,
+  TextBoxTitle,
+} from "../components/text-box";
 import PersonBox from "../components/person-box";
 import RichText from "../components/rich-text";
 import SomeBox from "../components/some-box";
@@ -18,27 +24,34 @@ const RootIndex = (props) => {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
             <div className="col-span-2">
-              <TextBox title="Tarina">
-                <RichText raw={person.bio.raw} />
+              <TextBox>
+                <TextBoxBody noHeader>
+                  <TextBoxPadder>
+                    <RichText raw={person.bio.raw} />
+                  </TextBoxPadder>
+                </TextBoxBody>
               </TextBox>
 
-              <TextBox noPadding title="Kuuntele ensimmäinen jakso">
-                <div className="w-4/5 px-auto">
-                  <h2 className="font-semibold text-xl md:text-2xl text-center mb-5">
-                    Ota selvää mistä seurantakoodeissa on kyse
-                  </h2>
-                  <p className="mb-5">
-                    Jotta saat kiinni siitä mitä ovat seurantakoodit, joita
-                    podcastissa käytetään, kuuntele podcasaivan ensimmäinen
-                    jakso.
-                  </p>
-                </div>
-                <div className="w-full">
-                  <Player
-                    url={firstEpisode.podbeanUrl}
-                    image={firstEpisode.image}
-                  />
-                </div>
+              <TextBox>
+                <TextBoxTitle>Kuuntele ensimmäinen jakso</TextBoxTitle>
+                <TextBoxBody>
+                  <TextBoxPadder>
+                    <h2 className="font-semibold text-xl md:text-2xl text-center mb-5">
+                      Ota selvää mistä seurantakoodeissa on kyse
+                    </h2>
+                    <p className="mb-5">
+                      Jotta saat kiinni siitä mitä ovat seurantakoodit, joita
+                      podcastissa käytetään, kuuntele podcasaivan ensimmäinen
+                      jakso.
+                    </p>
+                  </TextBoxPadder>
+                  <div className="w-full">
+                    <Player
+                      url={firstEpisode.podbeanUrl}
+                      image={firstEpisode.image}
+                    />
+                  </div>
+                </TextBoxBody>
               </TextBox>
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-5 lg:grid-cols-1">
