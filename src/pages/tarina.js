@@ -57,54 +57,11 @@ export default RootIndex;
 export const pageQuery = graphql`
   query StoryQuery {
     person: contentfulPerson(name: { eq: "Lauri Saarni" }) {
-      name
-      bio {
-        raw
-      }
-      shortBio {
-        shortBio
-        childMarkdownRemark {
-          html
-        }
-      }
-      email
-      facebook
-      twitter
-      instagram
-      image {
-        fluid(maxWidth: 400) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
+      ...person
     }
 
     firstEpisode: contentfulEpisode(episodeNumber: { eq: 1 }) {
-      contentful_id
-      title
-      episodeNumber
-      slug
-      published(formatString: "D.M.YYYY")
-      duration
-      excerpt {
-        excerpt
-      }
-      podbeanUrl
-      tags {
-        title
-        slug
-      }
-      bibleReference {
-        title
-        shortName
-        text {
-          text
-        }
-      }
-      image {
-        fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
+      ...episodePreview
     }
   }
 `;

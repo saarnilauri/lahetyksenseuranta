@@ -1,10 +1,11 @@
 import React from "react";
+import { graphql } from "gatsby";
+
 import Layout from "../components/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
 import PersonBox from "../components/person-box";
 import TextBox from "../components/text-box";
-import SomeBox from "../components/some-box";
 
 const RootIndex = (props) => {
   const { person } = props.data;
@@ -24,7 +25,7 @@ const RootIndex = (props) => {
                   <a
                     href={person.facebook}
                     target="_blank"
-                    rel="noRef"
+                    rel="noreferrer"
                     className="text-red-500 hover:text-gray-800"
                   >
                     Facebook
@@ -34,7 +35,7 @@ const RootIndex = (props) => {
                   <a
                     href={person.twitter}
                     target="_blank"
-                    rel="noRef"
+                    rel="noreferrer"
                     className="text-red-500 hover:text-gray-800"
                   >
                     Twitter
@@ -44,7 +45,7 @@ const RootIndex = (props) => {
                   <a
                     href={person.instagram}
                     target="_blank"
-                    rel="noRef"
+                    rel="noreferrer"
                     className="text-red-500 hover:text-gray-800"
                   >
                     Instagram
@@ -67,25 +68,7 @@ export default RootIndex;
 export const pageQuery = graphql`
   query ContactsQuery {
     person: contentfulPerson(name: { eq: "Lauri Saarni" }) {
-      name
-      bio {
-        raw
-      }
-      shortBio {
-        shortBio
-        childMarkdownRemark {
-          html
-        }
-      }
-      email
-      facebook
-      twitter
-      instagram
-      image {
-        fluid(maxWidth: 400) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
+      ...person
     }
   }
 `;

@@ -31,56 +31,68 @@ export const pageQuery = graphql`
     allContentfulEpisode(sort: { fields: [published], order: DESC }) {
       edges {
         node {
-          contentful_id
-          title
-          episodeNumber
-          slug
-          published(formatString: "D.M.YYYY")
-          duration
-          excerpt {
-            excerpt
-          }
-          podbeanUrl
-          tags {
-            title
-          }
-          bibleReference {
-            title
-            shortName
-            text {
-              text
-            }
-          }
-          image {
-            fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
-              ...GatsbyContentfulFluid_withWebp
-            }
-          }
+          ...episodePreview
         }
       }
     }
     person: contentfulPerson(name: { eq: "Lauri Saarni" }) {
-      name
-      shortBio {
-        shortBio
-        childMarkdownRemark {
-          html
-        }
-      }
-      email
-      facebook
-      twitter
-      instagram
-      image {
-        fluid(maxWidth: 400) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
+      ...person
     }
     bgMap: contentfulAsset(title: { eq: "bg-map" }) {
       fluid(maxWidth: 1200) {
         ...GatsbyContentfulFluid_withWebp
       }
+    }
+  }
+`;
+
+export const episodePreviewFragment = graphql`
+  fragment episodePreview on ContentfulEpisode {
+    contentful_id
+    title
+    episodeNumber
+    slug
+    published(formatString: "D.M.YYYY")
+    duration
+    podbeanUrl
+    excerpt {
+      excerpt
+    }
+    bibleReference {
+      title
+      shortName
+      text {
+        text
+      }
+    }
+    image {
+      fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
+        ...GatsbyContentfulFluid_withWebp
+      }
+    }
+  }
+`;
+
+export const personFragment = graphql`
+  fragment person on ContentfulPerson {
+    name
+    shortBio {
+      shortBio
+      childMarkdownRemark {
+        html
+      }
+    }
+    email
+    facebook
+    twitter
+    instagram
+    image {
+      fluid(maxWidth: 400) {
+        ...GatsbyContentfulFluid_withWebp
+      }
+    }
+    bio {
+      raw
     }
   }
 `;

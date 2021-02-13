@@ -4,7 +4,7 @@ import Img from "gatsby-image";
 import ReactMarkdown from "react-markdown";
 import { Link } from "gatsby";
 
-const PersonBox = ({ person, title = "Henkilö podcastin takana" }, noLink) => (
+const PersonBox = ({ person, title = "Henkilö podcastin takana", noLink }) => (
   <TextBox title={title}>
     <div>
       <Img

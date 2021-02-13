@@ -20,27 +20,7 @@ export const pageQuery = graphql`
     allContentfulEpisode(sort: { fields: [published], order: DESC }) {
       edges {
         node {
-          contentful_id
-          title
-          episodeNumber
-          slug
-          published(formatString: "D.M.YYYY")
-          duration
-          excerpt {
-            excerpt
-          }
-          bibleReference {
-            title
-            shortName
-            text {
-              text
-            }
-          }
-          image {
-            fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
-              ...GatsbyContentfulFluid_withWebp
-            }
-          }
+          ...episodePreview
         }
       }
     }
