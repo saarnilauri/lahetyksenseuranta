@@ -19,8 +19,8 @@ const RootIndex = (props) => {
       <SEO title="Yhetystiedot" />
       <section className="bg-gray-200 py-10 ">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
-            <div className="col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
+            <div className="lg:col-span-2">
               <TextBox>
                 <TextBoxTitle>Yhteystiedot</TextBoxTitle>
                 <TextBoxBody>
@@ -61,7 +61,7 @@ const RootIndex = (props) => {
                 </TextBoxBody>
               </TextBox>
             </div>
-            <div className="md:grid md:grid-cols-2 md:gap-5 lg:grid-cols-1">
+            <div className="grid grid-cols-1 md:grid-cols-1 md:gap-5 lg:grid-cols-1">
               <PersonBox title="Podcastin isäntä" noLink person={person} />
             </div>
           </div>

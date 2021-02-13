@@ -1,13 +1,12 @@
 import React from "react";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import H1 from "./h1";
 
 const Paragraph = ({ children }) => (
   <p className="text-left mb-2">{children}</p>
 );
-const H1 = ({ children }) => (
-  <h1 className="font-bold text-5xl uppercase mb-5">{children}</h1>
-);
+const HEAD1 = ({ children }) => <H1 black>{children}</H1>;
 const H2 = ({ children }) => (
   <h2 className="font-bold text-2xl uppercase mb-5">{children}</h2>
 );
@@ -30,7 +29,7 @@ const options = {
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
-    [BLOCKS.HEADING_1]: (node, children) => <H1>{children}</H1>,
+    [BLOCKS.HEADING_1]: (node, children) => <HEAD1>{children}</HEAD1>,
     [BLOCKS.HEADING_2]: (node, children) => <H2>{children}</H2>,
     [BLOCKS.HEADING_3]: (node, children) => <H3>{children}</H3>,
     [BLOCKS.QUOTE]: (node, children) => <Quote>{children}</Quote>,
