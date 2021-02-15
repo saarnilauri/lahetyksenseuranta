@@ -1,15 +1,15 @@
 import React from "react";
 import H4 from "./h4";
-import TextBox, { TextBoxBody, TextBoxPadder, TextBoxTitle } from "./text-box";
+import TextBox from "./text-box";
 import IconPodcast from "./icon-podcast";
 import IconRss from "./icon-rss";
 import IconSpotify from "./icon-spotify";
 
 const PodcastBox = () => (
   <TextBox>
-    <TextBoxTitle>Kuuntele ja seuraa</TextBoxTitle>
-    <TextBoxBody>
-      <TextBoxPadder>
+    <TextBox.Title>Kuuntele ja seuraa</TextBox.Title>
+    <TextBox.Body>
+      <TextBox.Padder>
         <H4>Spotify</H4>
         <div className="mb-3">
           <a
@@ -52,8 +52,8 @@ const PodcastBox = () => (
         <p className="text-center md:text-xs lg:text-base mb-5">
           Vanha kunnon RSS syöte.
         </p>
-      </TextBoxPadder>
-    </TextBoxBody>
+      </TextBox.Padder>
+    </TextBox.Body>
   </TextBox>
 );
 

@@ -7,7 +7,7 @@ import PodcastBox from "./podcast-box";
 
 const InfoSection = ({ person, bgImage }) => (
   <BackgroundImage Tag="section" className="bg-gray-200" fluid={bgImage.fluid}>
-    <div class="bg-gradient-to-r from-white via-transparent to-white w-full py-10">
+    <div className="bg-gradient-to-r from-white via-transparent to-white w-full py-10">
       <Container>
         <div className="grid md:grid-cols-3 gap-5 lg:gap-10 items-stretch">
           <PersonBox person={person} />

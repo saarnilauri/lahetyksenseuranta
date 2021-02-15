@@ -3,13 +3,13 @@ import Img from "gatsby-image";
 import ReactMarkdown from "react-markdown";
 import { Link } from "gatsby";
 
-import TextBox, { TextBoxBody, TextBoxPadder, TextBoxTitle } from "./text-box";
+import TextBox from "./text-box";
 
 const PersonBox = ({ person, title = "Henkilö podcastin takana", noLink }) => (
   <TextBox>
-    <TextBoxTitle>{title}</TextBoxTitle>
-    <TextBoxBody>
-      <TextBoxPadder>
+    <TextBox.Title>{title}</TextBox.Title>
+    <TextBox.Body>
+      <TextBox.Padder>
         <Img
           fluid={person.image.fluid}
           alt={person.name}
@@ -29,8 +29,8 @@ const PersonBox = ({ person, title = "Henkilö podcastin takana", noLink }) => (
             Lue lisää<span className="sr-only"> Laurista</span>
           </Link>
         )}
-      </TextBoxPadder>
-    </TextBoxBody>
+      </TextBox.Padder>
+    </TextBox.Body>
   </TextBox>
 );
 

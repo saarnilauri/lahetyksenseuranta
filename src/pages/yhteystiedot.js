@@ -5,11 +5,7 @@ import Layout from "../components/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
 import PersonBox from "../components/person-box";
-import TextBox, {
-  TextBoxBody,
-  TextBoxPadder,
-  TextBoxTitle,
-} from "../components/text-box";
+import TextBox from "../components/text-box";
 
 const RootIndex = (props) => {
   const { person } = props.data;
@@ -22,9 +18,9 @@ const RootIndex = (props) => {
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <TextBox>
-                <TextBoxTitle>Yhteystiedot</TextBoxTitle>
-                <TextBoxBody>
-                  <TextBoxPadder>
+                <TextBox.Title>Yhteystiedot</TextBox.Title>
+                <TextBox.Body>
+                  <TextBox.Padder>
                     <p className="mb-3">{person.name}</p>
                     <p className="mb-3">{person.email}</p>
                     <p className="mb-3">
@@ -57,8 +53,8 @@ const RootIndex = (props) => {
                         Instagram
                       </a>
                     </p>
-                  </TextBoxPadder>
-                </TextBoxBody>
+                  </TextBox.Padder>
+                </TextBox.Body>
               </TextBox>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-1 md:gap-5 lg:grid-cols-1">

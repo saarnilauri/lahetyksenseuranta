@@ -1,5 +1,5 @@
 import React from "react";
-import TextBox, { TextBoxBody, TextBoxPadder, TextBoxTitle } from "./text-box";
+import TextBox from "./text-box";
 import H4 from "./h4";
 import IconFacebook from "./icon-facebook";
 import IconTwitter from "./icon-twitter";
@@ -8,9 +8,9 @@ import IconInstagram from "./icon-instagram";
 const SomeBox = ({ person }) => {
   return (
     <TextBox>
-      <TextBoxTitle>Seuraa somessa</TextBoxTitle>
-      <TextBoxBody>
-        <TextBoxPadder>
+      <TextBox.Title>Seuraa somessa</TextBox.Title>
+      <TextBox.Body>
+        <TextBox.Padder>
           <H4>Facebook</H4>
           <div className="mb-3">
             <a href={person.facebook} target="_blank" rel="noreferrer">
@@ -42,8 +42,8 @@ const SomeBox = ({ person }) => {
           <p className="text-center md:text-xs lg:text-base mb-5">
             Kuvia ja ajatuksia
           </p>
-        </TextBoxPadder>
-      </TextBoxBody>
+        </TextBox.Padder>
+      </TextBox.Body>
     </TextBox>
   );
 };

@@ -4,11 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
-import TextBox, {
-  TextBoxBody,
-  TextBoxPadder,
-  TextBoxTitle,
-} from "../components/text-box";
+import TextBox from "../components/text-box";
 import PersonBox from "../components/person-box";
 import RichText from "../components/rich-text";
 import SomeBox from "../components/some-box";
@@ -25,17 +21,17 @@ const RootIndex = (props) => {
           <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
             <div className="col-span-2">
               <TextBox>
-                <TextBoxBody noHeader>
-                  <TextBoxPadder>
+                <TextBox.Body>
+                  <TextBox.Padder>
                     <RichText raw={person.bio.raw} />
-                  </TextBoxPadder>
-                </TextBoxBody>
+                  </TextBox.Padder>
+                </TextBox.Body>
               </TextBox>
 
               <TextBox>
-                <TextBoxTitle>Kuuntele ensimmäinen jakso</TextBoxTitle>
-                <TextBoxBody>
-                  <TextBoxPadder>
+                <TextBox.Title>Kuuntele ensimmäinen jakso</TextBox.Title>
+                <TextBox.Body>
+                  <TextBox.Padder>
                     <h2 className="font-semibold text-xl md:text-2xl text-center mb-5">
                       Ota selvää mistä seurantakoodeissa on kyse
                     </h2>
@@ -44,14 +40,14 @@ const RootIndex = (props) => {
                       podcastissa käytetään, kuuntele podcasaivan ensimmäinen
                       jakso.
                     </p>
-                  </TextBoxPadder>
+                  </TextBox.Padder>
                   <div className="w-full">
                     <Player
                       url={firstEpisode.podbeanUrl}
                       image={firstEpisode.image}
                     />
                   </div>
-                </TextBoxBody>
+                </TextBox.Body>
               </TextBox>
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-5 lg:grid-cols-1">
