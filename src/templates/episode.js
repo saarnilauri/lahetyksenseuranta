@@ -11,7 +11,11 @@ const EpisodeTemplate = (props) => {
 
   return (
     <Layout location={props.location}>
-      <SEO title={`Jakso ${episode.episodeNumber} - ${episode.title}`} />
+      <SEO
+        title={`Lähetyksenseuranta podcast: Jakso ${episode.episodeNumber} - ${episode.title}`}
+        description={episode.excerpt.excerpt}
+        image={episode.image.fixed.src}
+      />
       <LargeEpisodePlayer episode={episode} />
 
       <div className="container md:px-10 md:py-10 mx-auto md:grid md:grid-cols-2 md:gap-10">
@@ -80,6 +84,9 @@ export const pageQuery = graphql`
       image {
         fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
           ...GatsbyContentfulFluid_withWebp
+        }
+        fixed(width: 1200, height: 628, quality: 90, resizingBehavior: CROP) {
+          ...GatsbyContentfulFixed_noBase64
         }
       }
       description {

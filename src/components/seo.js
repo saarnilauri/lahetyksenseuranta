@@ -4,28 +4,30 @@ import { Helmet } from "react-helmet";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = ({ title, description, image, article }) => {
+const SEO = ({ title, description, article, image }) => {
   const { pathname } = useLocation();
-  const { site } = useStaticQuery(query);
+  const { site, someImage } = useStaticQuery(query);
   const {
     defaultTitle,
     titleTemplate,
     defaultDescription,
     siteUrl,
-    defaultImage,
     twitterUsername,
   } = site.siteMetadata;
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: `${image ? image : someImage.fixed.src}`,
     url: `${siteUrl}${pathname}`,
   };
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate} htmlAttributes={{
-      lang: 'fi',
-    }}>
-    
+    <Helmet
+      title={seo.title}
+      titleTemplate={titleTemplate}
+      htmlAttributes={{
+        lang: "fi",
+      }}
+    >
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       {seo.url && <meta property="og:url" content={seo.url} />}
@@ -69,8 +71,12 @@ const query = graphql`
         titleTemplate
         defaultDescription: description
         siteUrl: url
-        defaultImage: image
         twitterUsername
+      }
+    }
+    someImage: contentfulAsset(title: { eq: "some-image" }) {
+      fixed(width: 1200, quality: 90) {
+        ...GatsbyContentfulFixed_noBase64
       }
     }
   }

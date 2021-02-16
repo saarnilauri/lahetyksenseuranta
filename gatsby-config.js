@@ -40,8 +40,7 @@ module.exports = {
     titleTemplate: "%s · Lähetksenseuranta podcast",
     description:
       "Lähetyksenseuranta podcast. Teitä varten, jotka haluatte pohtia lähetystyötä nykyajassa.",
-    url: "https://lahetyksenseuranta.netlify.app", // No trailing slash allowed!
-    image: "/images/header-bg-alt.jpg", // Path to your image you placed in the 'static' folder
+    url: "https://lahetyksenseuranta.com", // No trailing slash allowed!
     twitterUsername: "@lsaarni",
   },
   pathPrefix: "/gatsby-contentful-starter",
