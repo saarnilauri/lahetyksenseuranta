@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Img from "gatsby-image";
 import { Link } from "gatsby";
+import SROnly from "./sr-only-text";
 
 const LinkItem = ({ title, slug, isActive, isMobile }) => {
   let commonStyles = "uppercase rounded-md font-medium px-3 py-2 text-sm ";
@@ -66,7 +67,7 @@ const Navigation = ({ location, siteLogo }) => {
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
-                <span className="sr-only">Open main menu</span>
+                <SROnly>Open main menu</SROnly>
               </button>
             </div>
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">

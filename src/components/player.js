@@ -10,8 +10,8 @@ import IconSpeed1 from "./icon-speed-1";
 import IconSpeed15 from "./icon-speed-1-5";
 import IconSpeed2 from "./icon-speed-2";
 import IconVolume from "./icon-volume";
-
 import Duration from "./duration";
+import SROnly from "./sr-only-text";
 
 const initialState = {
   url: "",
@@ -76,6 +76,7 @@ const Player = ({ url, image, title }) => {
           <div className="flex justify-center content-center w-1/4 volume-wrapper">
             <div className="pr-2">
               <IconVolume />
+              <SROnly>Äänenvoimakkuus</SROnly>
             </div>
             <input
               type="range"
@@ -93,9 +94,7 @@ const Player = ({ url, image, title }) => {
             <button onClick={() => dispatch({ type: "TOGGLE_PLAY_PAUSE" })}>
               {!state.playing && <IconPlay />}
               {state.playing && <IconPause />}
-              <span className="sr-only">
-                {state.playing ? "Pause" : "Play"}
-              </span>
+              <SROnly>{state.playing ? "Pause" : "Play"}</SROnly>
             </button>
           </div>
           <div className="flex justify-center w-1/4 speed-button-wrapper">
@@ -111,17 +110,23 @@ const Player = ({ url, image, title }) => {
               {state.playbackRate === 1.0 && <IconSpeed1 />}
               {state.playbackRate === 1.5 && <IconSpeed15 />}
               {state.playbackRate === 2 && <IconSpeed2 />}
-              <span className="sr-only">Toistonopeus {state.playbackRate}</span>
+              <SROnly>Toistonopeus {state.playbackRate}</SROnly>
             </button>
           </div>
         </div>
         <div className="flex justify-center content-center mb-10">
           <div className="w-1/6 text-right	duration-progress">
+            <SROnly>Toistettu </SROnly>
             <Duration seconds={state.duration * state.played} />
           </div>
           <div className="relative w-4/6 h-2 mx-5 md:mx-10 mt-2 play-slider">
             <progress
-              className="play-progress absolute left-0 top-0 rounded-full bg-white"
+              className="absolute left-0 top-0 rounded-full bg-gray-700 load-progress"
+              max={1}
+              value={state.loaded}
+            />
+            <progress
+              className="absolute left-0 top-0 rounded-full bg-transparent play-progress"
               max={1}
               value={state.played}
             />
@@ -143,10 +148,11 @@ const Player = ({ url, image, title }) => {
             />
           </div>
           <div className="w-1/6 text-left	duration-remaining">
+            <SROnly>Jäljellä </SROnly>
             <Duration seconds={state.duration * (1 - state.played)} />
           </div>
         </div>
-        {/*</div><progress max={1} value={state.loaded} />
+        {/*</div>
         <Duration seconds={state.duration} /> -
         <Duration seconds={state.duration * state.played} /> -
           */}

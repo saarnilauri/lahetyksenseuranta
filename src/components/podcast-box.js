@@ -4,6 +4,7 @@ import TextBox from "./text-box";
 import IconPodcast from "./icon-podcast";
 import IconRss from "./icon-rss";
 import IconSpotify from "./icon-spotify";
+import SROnly from "./sr-only-text";
 
 const PodcastBox = () => (
   <TextBox>
@@ -18,7 +19,7 @@ const PodcastBox = () => (
             rel="noreferrer"
           >
             <IconSpotify />
-            <span className="sr-only">Avaa Spotify</span>
+            <SROnly>Avaa Spotify</SROnly>
           </a>
         </div>
         <p className="text-center md:text-xs lg:text-base mb-5">
@@ -32,7 +33,7 @@ const PodcastBox = () => (
             rel="noreferrer"
           >
             <IconPodcast />
-            <span className="sr-only">Avaa Spotify</span>
+            <SROnly>Avaa Spotify</SROnly>
           </a>
         </div>
         <p className="text-center md:text-xs lg:text-base mb-5">
@@ -46,7 +47,7 @@ const PodcastBox = () => (
             rel="noreferrer"
           >
             <IconRss />
-            <span className="sr-only">Avaa RSS-syöte</span>
+            <SROnly>Avaa RSS-syöte</SROnly>
           </a>
         </div>
         <p className="text-center md:text-xs lg:text-base mb-5">

@@ -338,6 +338,11 @@ exports[`LargeEpisodePlayer renders correctly 1`] = `
                   />
                 </g>
               </svg>
+              <span
+                className="sr-only"
+              >
+                Äänenvoimakkuus
+              </span>
             </div>
             <input
               max={1}
@@ -420,6 +425,11 @@ exports[`LargeEpisodePlayer renders correctly 1`] = `
           <div
             className="w-1/6 text-right	duration-progress"
           >
+            <span
+              className="sr-only"
+            >
+              Toistettu 
+            </span>
             <time
               dateTime="P0S"
             >
@@ -430,7 +440,12 @@ exports[`LargeEpisodePlayer renders correctly 1`] = `
             className="relative w-4/6 h-2 mx-5 md:mx-10 mt-2 play-slider"
           >
             <progress
-              className="play-progress absolute left-0 top-0 rounded-full bg-white"
+              className="absolute left-0 top-0 rounded-full bg-gray-700 load-progress"
+              max={1}
+              value={0}
+            />
+            <progress
+              className="absolute left-0 top-0 rounded-full bg-transparent play-progress"
               max={1}
               value={0}
             />
@@ -449,6 +464,11 @@ exports[`LargeEpisodePlayer renders correctly 1`] = `
           <div
             className="w-1/6 text-left	duration-remaining"
           >
+            <span
+              className="sr-only"
+            >
+              Jäljellä 
+            </span>
             <time
               dateTime="P0S"
             >

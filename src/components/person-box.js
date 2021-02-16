@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "gatsby";
 
 import TextBox from "./text-box";
+import SROnly from "./sr-only-text";
 
 const PersonBox = ({ person, title = "Henkilö podcastin takana", noLink }) => (
   <TextBox>
@@ -26,7 +27,7 @@ const PersonBox = ({ person, title = "Henkilö podcastin takana", noLink }) => (
             to="/tarina/"
             className="hover:bg-gray-900 py-2 px-3 font-semibold hover:text-white bg-gray-600 text-gray-100"
           >
-            Lue lisää<span className="sr-only"> Laurista</span>
+            Lue lisää<SROnly> Laurista</SROnly>
           </Link>
         )}
       </TextBox.Padder>
