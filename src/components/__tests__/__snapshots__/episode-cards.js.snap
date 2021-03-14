@@ -230,7 +230,9 @@ exports[`EpisodeCards renders correctly with the node key 1`] = `
             </svg>
             <p
               className="ml-2 text-sm"
-            />
+            >
+              undefineds
+            </p>
           </div>
           <div
             className="flex items-center mr-4"
@@ -499,7 +501,9 @@ exports[`EpisodeCards renders correctly with the node key 1`] = `
             </svg>
             <p
               className="ml-2 text-sm"
-            />
+            >
+              undefineds
+            </p>
           </div>
           <div
             className="flex items-center mr-4"
@@ -779,7 +783,9 @@ exports[`EpisodeCards renders correctly without the node key 1`] = `
             </svg>
             <p
               className="ml-2 text-sm"
-            />
+            >
+              undefineds
+            </p>
           </div>
           <div
             className="flex items-center mr-4"
@@ -1048,7 +1054,9 @@ exports[`EpisodeCards renders correctly without the node key 1`] = `
             </svg>
             <p
               className="ml-2 text-sm"
-            />
+            >
+              undefineds
+            </p>
           </div>
           <div
             className="flex items-center mr-4"

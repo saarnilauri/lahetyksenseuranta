@@ -135,7 +135,7 @@ exports[`LargeEpisodePlayer renders correctly 1`] = `
               className="mr-5"
             >
               <p>
-                19m 20s
+                undefineds
               </p>
             </div>
           </div>

@@ -13,6 +13,8 @@ const IconTextWrapper = ({ children }) => (
 );
 
 const LargeEpisodePlayer = ({ episode }) => {
+  let formattedDuration = episode.duration + "";
+  formattedDuration = formattedDuration.replace(":", "min ") + "s";
   return (
     <Container>
       <div className="bg-gray-700 py-5 px-5 md:py-10 md:px-10 text-white">
@@ -38,7 +40,7 @@ const LargeEpisodePlayer = ({ episode }) => {
                   <IconClock />
                 </IconWrapper>
                 <IconTextWrapper>
-                  <p>19m 20s</p>
+                  <p>{formattedDuration}</p>
                 </IconTextWrapper>
               </div>
               <div className="flex flex-row items-center">
