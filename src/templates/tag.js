@@ -6,7 +6,7 @@ import SEO from "../components/seo";
 import EpisodeCards from "../components/episode-cards";
 
 const TagTemplate = (props) => {
-  const tag = props.data.contentfulTag;
+  const { tag, episodes } = props.data;
 
   return (
     <Layout location={props.location}>
@@ -15,7 +15,7 @@ const TagTemplate = (props) => {
         <h1 className="text-white text-md md:text-2xl lg:text-4xl font-bold uppercase mb-10">
           Avainsanaan &ldquo;{tag.title}&rdquo; liittyvät jaksot
         </h1>
-        <EpisodeCards episodes={tag.episode} />
+        <EpisodeCards episodes={episodes.nodes} />
       </div>
     </Layout>
   );
@@ -25,31 +25,15 @@ const TagTemplate = (props) => {
 export default TagTemplate;
 
 export const pageQuery = graphql`
-  query TagBySlug($slug: String!) {
-    contentfulTag(slug: { eq: $slug }) {
+  query TagBySlug($slug: String) {
+    tag: contentfulTag(slug: { eq: $slug }) {
       title
-      slug
-      episode {
-        contentful_id
-        title
-        episodeNumber
-        slug
-        published(formatString: "D.M.YYYY")
-        excerpt {
-          excerpt
-        }
-        bibleReference {
-          title
-          shortName
-          text {
-            text
-          }
-        }
-        image {
-          fluid(maxWidth: 573, maxHeight: 321, resizingBehavior: CROP) {
-            ...GatsbyContentfulFluid_withWebp
-          }
-        }
+    }
+    episodes: allContentfulEpisode(
+      filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
+    ) {
+      nodes {
+        ...episodePreview
       }
     }
   }
