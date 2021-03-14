@@ -9,7 +9,7 @@ import Container from "../components/container";
 
 const RootIndex = (props) => {
   const episodes = props.data.allContentfulEpisode.edges;
-  const episodesToSlice = episodes.length >= 4 ? 3 : episodes.length;
+  const episodesToSlice = episodes.length >= 5 ? 3 : episodes.length;
   return (
     <Layout location={props.location}>
       <SEO />
